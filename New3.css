@@ -1,0 +1,224 @@
+/* === GENEL STİL === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  background: black;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+canvas {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+/* === AÇILIŞ ANİMASYONU === */
+.intro-text {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  color: #ff69b4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: bold;
+  z-index: 9999;
+  animation: zoomFade 3s ease forwards;
+  text-align: center;
+}
+@keyframes zoomFade {
+  0% { transform: scale(0); opacity: 0; }
+  30% { transform: scale(1.5); opacity: 1; }
+  60% { transform: scale(1); }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+/* === ÜST BAR === */
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  backdrop-filter: blur(20px);
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  animation: fadeInBar 0.5s ease 3s forwards;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.topbar span {
+  color: #ff69b4;
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-shadow: 0 0 8px rgba(255, 105, 180, 0.5);
+}
+@keyframes fadeInBar {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* === ANA İÇERİK === */
+.main-content {
+  position: absolute;
+  top: 80px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 40px;
+  box-sizing: border-box;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInMain 0.8s ease 3s forwards;
+  overflow: hidden;
+  gap: 20px;
+}
+@keyframes fadeInMain {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === FORM ALANI === */
+.form-area, .result-area {
+  flex: 1;
+  min-height: 0;
+  padding: 30px;
+  font-size: 1.1rem;
+  border-radius: 25px;
+  backdrop-filter: blur(15px);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  overflow-y: auto;
+  max-height: calc(100vh - 160px); /* 60px topbar + 80px top + padding */
+}
+
+.form-area h2 {
+  color: #ff69b4;
+  margin-bottom: 10px;
+}
+.form-area input, .form-area select {
+  width: 100%;
+  padding: 14px;
+  font-size: 1.1rem;
+  background: rgba(255,255,255,0.1);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  margin-bottom: 10px;
+}
+.form-area input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+.form-area select option {
+  background: black;
+  color: white;
+}
+
+/* === RADYO BUTONLAR === */
+.radio-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.radio-btn {
+  flex: 1;
+  padding: 10px;
+  background-color: #222;
+  border: 2px solid #ff69b4;
+  color: #ff69b4;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.radio-btn.active,
+.radio-btn:hover {
+  background-color: #ff69b4;
+  color: black;
+}
+
+.conditional {
+  margin-bottom: 10px;
+}
+.hidden {
+  display: none;
+}
+
+/* === BUTONLAR === */
+.form-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+.form-buttons button {
+  flex: 1;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+#calcBtn, #claimBtn {
+  background-color: #ff69b4;
+  color: white;
+}
+#calcBtn:disabled,
+#claimBtn:disabled {
+  background-color: #555;
+  color: #aaa;
+  cursor: not-allowed;
+}
+#resetBtn {
+  background-color: #999;
+  color: white;
+}
+
+/* === SONUÇ === */
+.result-header {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #ff69b4;
+}
+.result-value {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 25px;
+  text-shadow: 0 0 6px #ff69b4;
+}
+
+/* === gPROVE === */
+.gprove-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  color: #ff69b4;
+  font-size: 4rem;
+  font-weight: bold;
+  text-shadow: 0 0 12px #ff69b4;
+  z-index: 9999;
+  animation: none;
+  pointer-events: none;
+}
+@keyframes pop {
+  0%   { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+  40%  { transform: translate(-50%, -50%) scale(1.5); opacity: 1; }
+  70%  { transform: translate(-50%, -50%) scale(1); }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+}

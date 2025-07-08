@@ -1,0 +1,75 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Succinct Airdrop</title>
+  <link rel="stylesheet" href="New3.css">
+</head>
+<body>
+ 
+  <div class="intro-text">Succinct Fan Airdrop CHECKER</div>
+
+
+  <div class="topbar">
+    <span>Succinct Airdrop </span>
+  </div>
+
+ 
+  <div class="gprove-popup" id="gprovePopup">gPROVE</div>
+
+
+  <div class="main-content">
+    
+    <div class="form-area">
+      <h2>Airdrop Input</h2>
+      <form id="airdropForm">
+        <input type="number" placeholder="Stage 1 Stars" name="stage1_stars">
+        <input type="number" placeholder="Stage 1 Proof" name="stage1_proof">
+
+        <label>Did you participate in Stage 2?</label>
+        <div class="radio-group">
+          <button type="button" class="radio-btn" data-target="stage2Fields" data-value="yes">Yes</button>
+          <button type="button" class="radio-btn" data-target="stage2Fields" data-value="no">No</button>
+        </div>
+        <div class="conditional hidden" id="stage2Fields">
+          <input type="number" placeholder="Stage 2 Stars" name="stage2_stars">
+          <input type="number" placeholder="Stage 2 Proof" name="stage2_proof">
+        </div>
+
+        <label>Do you have a Discord role?</label>
+        <div class="radio-group">
+          <button type="button" class="radio-btn" data-target="discordRoleSelect" data-value="yes">Yes</button>
+          <button type="button" class="radio-btn" data-target="discordRoleSelect" data-value="no">No</button>
+        </div>
+        <div class="conditional hidden" id="discordRoleSelect">
+          <select name="discord_level">
+            <option value="">Select</option>
+            <option value="L1">L1</option>
+            <option value="L2">L2</option>
+            <option value="L3">L3</option>
+          </select>
+        </div>
+
+        <input type="number" placeholder="Stage 2.5 test token amount" name="stage25_tokens">
+        <input type="number" placeholder="Average Succinct Tweet Count" name="avg_tweets">
+
+        <div class="form-buttons">
+          <button type="button" id="calcBtn" disabled>Calculate Airdrop</button>
+          <button type="button" id="claimBtn" disabled>Claim</button>
+          <button type="reset" id="resetBtn">Reset</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Right Result Area -->
+    <div class="result-area">
+      <div class="result-header">Your Estimated Airdrop:</div>
+      <div class="result-value" id="airdropAmount">-- PROVE</div>
+    </div>
+  </div>
+
+  <!-- Background -->
+  <canvas id="canvas"></canvas>
+
+  <script src="New3.js"></script>
+</body>
+</html>
